@@ -14,17 +14,11 @@ config_vars:
   LD_LIBRARY_PATH: .heroku/vendor/lib
 EOF
 
-
-[ "$NAME" = "Python/Django" ] || exit 0
-
-SETTINGS_FILE=$(cd $BUILD_DIR && ls **/settings.py | head -1)
-PROJECT=$(dirname $SETTINGS_FILE)
-
 cat <<EOF
 
 addons:
   shared-database:5mb
 
 default_process_types:
-  web:      python $PROJECT/manage.py runserver 0.0.0.0:\$PORT --noreload
+  web:      goldenarch --dir output
 EOF
