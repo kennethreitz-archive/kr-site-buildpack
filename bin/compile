@@ -141,6 +141,11 @@ PIP_DOWNLOAD_CACHE=$PIP_DOWNLOAD_CACHE bin/pip install --use-mirrors -r requirem
 echo "-----> Installing Kenneth's lazy static content server. I'm lovin' it!"
 pip install goldenarch
 
+
+# Build the blog.
+echo "-----> Building Kenneth's website"
+make
+
 set +e
 OUT=$(virtualenv --relocatable .)
 [ $? -ne 0 ] && {
