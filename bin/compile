@@ -137,6 +137,10 @@ fi
 echo "-----> Installing dependencies using pip version $(bin/pip --version | awk '{print $2}')"
 PIP_DOWNLOAD_CACHE=$PIP_DOWNLOAD_CACHE bin/pip install --use-mirrors -r requirements.txt | indent
 
+# Install static content server
+echo "-----> Installing Kenneth's lazy static content server. I'm lovin' it!"
+pip install goldenarch
+
 set +e
 OUT=$(virtualenv --relocatable .)
 [ $? -ne 0 ] && {
