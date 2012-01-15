@@ -79,6 +79,9 @@ then
 fi
 
 
+# Activate virtualenv
+echo "-----> Activating virtualenv."
+source bin/activate
 
 # if Django, append settings
 if [ "$NAME" = "Python/Django" ]; then
@@ -130,12 +133,11 @@ EOF
 fi
 
 if (grep -Fiq "hg+" requirements.txt) then
-  PIP_DOWNLOAD_CACHE=$PIP_DOWNLOAD_CACHE bin/pip install --use-mirrors mercurial | indent
-  source bin/activate
+  PIP_DOWNLOAD_CACHE=$PIP_DOWNLOAD_CACHE pip install --use-mirrors mercurial | indent
 fi
 
 echo "-----> Installing dependencies using pip version $(bin/pip --version | awk '{print $2}')"
-PIP_DOWNLOAD_CACHE=$PIP_DOWNLOAD_CACHE bin/pip install --use-mirrors -r requirements.txt | indent
+PIP_DOWNLOAD_CACHE=$PIP_DOWNLOAD_CACHE pip install --use-mirrors -r requirements.txt | indent
 
 # Install static content server
 echo "-----> Installing Kenneth's lazy static content server. I'm lovin' it!"
