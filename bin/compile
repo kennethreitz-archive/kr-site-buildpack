@@ -141,7 +141,7 @@ PIP_DOWNLOAD_CACHE=$PIP_DOWNLOAD_CACHE pip install --use-mirrors -r requirements
 
 # Install static content server
 echo "-----> Installing Kenneth's lazy static content server. I'm lovin' it!"
-pip install goldenarch
+pip install goldenarch --upgrade
 
 
 # Build the blog.
